@@ -14,6 +14,11 @@
     box-sizing: border-box;
 }
 
+#sidebar-toggle {
+    display: none;
+}
+
+
 .sidebar {
     height: 100%;
     width: 240px;
@@ -24,7 +29,7 @@
     background: var(--main-color);
     color: #fff;
     overflow-y: auto;
-    
+    transition: width 500ms;
 }
 
 .sidebar-header{
@@ -34,6 +39,9 @@
     height:60px;
     padding: 0rem 1rem;
 
+}
+label {
+    cursor: pointer;
 }
 
 .sidebar-menu {
@@ -53,9 +61,34 @@
     padding-left: .6rem;
 }
 
+#sidebar-toggle:checked ~ .sidebar  {
+    width:60px;
+}
+
+#sidebar-toggle:checked ~ .sidebar .sidebar-header h3 span,
+#sidebar-toggle:checked ~ .sidebar li span:last-child {
+    display:none;
+    text-align: center;
+}
+
+#sidebar-toggle:checked ~ .sidebar .sidebar-header,
+#sidebar-toggle:checked ~ .sidebar li {
+    display:flex;
+    justify-content:center;
+}
+
+#sidebar-toggle:checked ~ .main-content  {
+    margin-left:60px;
+}
+
+#sidebar-toggle:checked ~ .main-content header {
+    left:60px;
+}
+
 .main-content{
     position: relative;
     margin-left: 240px;
+    transition: margin-left 500ms;
 }
 
 header{
@@ -71,6 +104,7 @@ header{
     align-items: center;
     justify-content:space-between;
     border-bottom: 1px solid var(--text-gray);
+    transition: left 500ms;
 }
 
 .search-wrapper {
